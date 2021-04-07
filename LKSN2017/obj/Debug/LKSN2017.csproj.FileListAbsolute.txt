@@ -1,0 +1,10 @@
+c:\users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\bin\Debug\LKSN2017.exe.config
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.csprojResolveAssemblyReference.cache
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.Form1.resources
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.Properties.Resources.resources
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.csproj.GenerateResource.Cache
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\bin\Debug\LKSN2017.exe
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\bin\Debug\LKSN2017.pdb
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.exe
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.pdb
+c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.StudentNavigation.resources
