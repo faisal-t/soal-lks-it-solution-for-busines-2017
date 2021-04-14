@@ -8,3 +8,15 @@ c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\bin\Debug\L
 c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.exe
 c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.pdb
 c:\Users\mrx\documents\visual studio 2015\Projects\LKSN2017\LKSN2017\obj\Debug\LKSN2017.StudentNavigation.resources
+D:\latihan lks\c-\LKSN2017\bin\Debug\LKSN2017.exe.config
+D:\latihan lks\c-\LKSN2017\bin\Debug\LKSN2017.exe
+D:\latihan lks\c-\LKSN2017\bin\Debug\LKSN2017.pdb
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.csprojAssemblyReference.cache
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.Form1.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.Properties.Resources.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.StudentNavigation.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.csproj.GenerateResource.cache
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.csproj.CoreCompileInputs.cache
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.exe
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.pdb
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.Form2.resources

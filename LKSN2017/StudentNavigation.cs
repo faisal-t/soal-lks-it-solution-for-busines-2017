@@ -17,38 +17,87 @@ namespace LKSN2017
         private SqlCommand cmd;
         private koneksi conn = new koneksi();
         private User user = new User();
-
-        public StudentNavigation()
-        {
-            InitializeComponent();
-        }
-
+        private String nama;
+        public static String role = "Student";
+        public static String id;
+        
 
         void TampilNama()
         {
             SqlConnection koneksi = conn.getKoneksi();
-            koneksi.Open();
-            string username = user.Username;
-            cmd = new SqlCommand("Select * from [Student] where StudentId = '" + username + "' ", koneksi);
-            cmd.Parameters.AddWithValue("@StudentId", username);
-            sdr = cmd.ExecuteReader();
-           
-            
-            if (sdr.NextResult())
+            try
             {
-                MessageBox.Show(sdr["Name"].ToString());
-                user.Name = sdr.GetString(1).ToString();
+                koneksi.Open();
+                var username = Form1.SetValueForText1;
+                id = Form1.SetValueForText1;
+                cmd = new SqlCommand("Select * From [Student] where StudentId='" + username.ToString() + "' ", koneksi);
+                //cmd.Parameters.AddWithValue("@StudentId", username);
+                sdr = cmd.ExecuteReader();
+                sdr.Read();
 
+
+
+                if (sdr.HasRows)
+                {
+
+                    user.Name = sdr.GetString(1).ToString();
+                    nama = sdr.GetString(1).ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
 
-            koneksi.Close();
+            finally
+            {
+                koneksi.Close();
+            }
+
+
 
         }
 
-        private void StudentNavigation_Load(object sender, EventArgs e)
+        public StudentNavigation()
+        {
+            InitializeComponent();
+            Refresh();
+            
+        }
+
+
+
+        public override void Refresh()
         {
             TampilNama();
-            label2.Text = user.Name;
+            studentName.Text = nama;
+        }
+
+        
+
+        
+
+
+       
+
+        private void StudentNavigation_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form1 frm1 = new Form1();
+            frm1.Show();
+            this.Close();
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 frmEdit = new Form2();
+            frmEdit.Show();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LKSN2017
 {
-    class User
+    internal class User
     {
         public int UserId { get; set; }
         public String Username { get; set; }

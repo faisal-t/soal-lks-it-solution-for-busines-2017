@@ -14,16 +14,17 @@ namespace LKSN2017
 {
     public partial class Form1 : Form
     {
-
+        public static String SetValueForText1 = "";
         koneksi conn = new koneksi();
         SqlCommand cmd;
         SqlDataReader sdr;
-        
+        User user = new User();
 
 
         public Form1()
         {
-            InitializeComponent();
+
+        InitializeComponent();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -65,12 +66,18 @@ namespace LKSN2017
                         }
                        else if(sdr.GetString(3).ToString() == "Student")
                         {
-                            User user = new User();
+                           
                             user.UserId = (sdr.GetInt32(0));
                             user.Username = (sdr.GetString(1));
+                            SetValueForText1 = (sdr.GetString(1));
                             StudentNavigation frmStudent = new StudentNavigation();
-                            //frmStudent.user = user;
+                            
+                            
+
                             frmStudent.Show();
+                            String username = (sdr.GetString(1));
+
+
                             this.Hide();
                         }
                         else
