@@ -24,7 +24,9 @@ namespace LKSN2017
         public Form1()
         {
 
-        InitializeComponent();
+            InitializeComponent();
+            txtPassword.PasswordChar = '*';
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -57,34 +59,24 @@ namespace LKSN2017
                         //MessageBox.Show(sdr.GetInt32(0).ToString());
                        if(sdr.GetString(3).ToString() == "Teacher")
                         {
-                            User user = new User();
-                            user.UserId = (sdr.GetInt32(0));
-                            user.Username = (sdr.GetString(1));
+                            SetValueForText1 = sdr.GetString(1);
                             TeacherNavigation frmTeacher = new TeacherNavigation();
                             frmTeacher.Show();
+                            
+                            
                             this.Hide();
                         }
                        else if(sdr.GetString(3).ToString() == "Student")
                         {
-                           
-                            user.UserId = (sdr.GetInt32(0));
-                            user.Username = (sdr.GetString(1));
                             SetValueForText1 = (sdr.GetString(1));
                             StudentNavigation frmStudent = new StudentNavigation();
-                            
-                            
-
                             frmStudent.Show();
                             String username = (sdr.GetString(1));
-
-
                             this.Hide();
                         }
                         else
                         {
-                            User user = new User();
-                            user.UserId = (sdr.GetInt32(0));
-                            user.Username = (sdr.GetString(1));
+                            SetValueForText1 = (sdr.GetString(1));
                             AdminNavigation frmAdmin = new AdminNavigation();
                             frmAdmin.Show();
                             this.Hide();
@@ -117,6 +109,16 @@ namespace LKSN2017
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = '\0';
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = '*';
         }
     }
 }

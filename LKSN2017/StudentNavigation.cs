@@ -18,7 +18,7 @@ namespace LKSN2017
         private koneksi conn = new koneksi();
         private User user = new User();
         private String nama;
-        public static String role = "Student";
+        public static String role = "";
         public static String id;
         
 
@@ -96,6 +96,7 @@ namespace LKSN2017
 
         private void button1_Click(object sender, EventArgs e)
         {
+            role = "Student";
             Form2 frmEdit = new Form2();
             frmEdit.Show();
         }
