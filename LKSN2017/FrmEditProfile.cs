@@ -160,7 +160,7 @@ namespace LKSN2017
                 {
                     MessageBox.Show("Data must be filled");
                 }
-                else if (edtName.TextLength >= 3 && edtName.TextLength >= 20)
+                else if (edtName.TextLength >= 3 && edtName.TextLength < 20)
                 {
                     MessageBox.Show("Nama Must be 3 character and maksimal 20 character");
                 }

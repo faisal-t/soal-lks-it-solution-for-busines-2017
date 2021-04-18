@@ -77,6 +77,7 @@
             this.btnManageStudent.TabIndex = 5;
             this.btnManageStudent.Text = "Manage Student";
             this.btnManageStudent.UseVisualStyleBackColor = true;
+            this.btnManageStudent.Click += new System.EventHandler(this.btnManageStudent_Click);
             // 
             // btnManageTeacher
             // 

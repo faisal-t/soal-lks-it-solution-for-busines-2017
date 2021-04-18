@@ -71,5 +71,10 @@ namespace LKSN2017
         {
 
         }
+
+        private void btnManageStudent_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

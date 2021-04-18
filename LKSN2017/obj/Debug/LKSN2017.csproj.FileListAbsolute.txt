@@ -33,3 +33,6 @@ C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.StudentNavigatio
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.csproj.GenerateResource.Cache
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.TeacherNavigation.resources
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.AdminNavigation.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.AdminNavigation.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.TeacherNavigation.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageStudent.resources
