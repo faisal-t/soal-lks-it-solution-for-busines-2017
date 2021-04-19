@@ -20,6 +20,8 @@ namespace LKSN2017
         private SqlCommand cmd;
         private String gender = "";
         private String jenis = "";
+        private int Year;
+
 
 
 
@@ -91,7 +93,7 @@ namespace LKSN2017
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -101,7 +103,7 @@ namespace LKSN2017
             btnCancel.Visible = true;
             txtName.Enabled = true;
             txtAddress.Enabled = true;
-            txtId.Enabled = true;
+            txtId.Enabled = false;
             groupBox1.Enabled = true;
             dateStudent.Enabled = true;
             txtPhone.Enabled = true;
@@ -122,95 +124,393 @@ namespace LKSN2017
         private void btnSave_Click(object sender, EventArgs e)
         {
             
-            if(jenis.Equals("insert"))
+            
+
+            if (jenis.Equals("insert"))
             {
 
-                //if (txtAddress.Text == "")
-                //{
-                //    MessageBox.Show("Address Must be Filled");
-                //}
+                Year = DateTime.Now.Year - dateStudent.Value.Year;
+
                 if (rdMale.Checked)
                 {
                     gender = "Male";
                 }
-                else
+                else if (rdFemale.Checked)
                 {
                     gender = "Female";
                 }
-                //else if(gender == "")
-                //{
-                //    MessageBox.Show("Gender Must be Filled");
-                //}
 
+                if (txtAddress.Text == "")
+                {
+                    MessageBox.Show("Address Must be Filled");
+                }
 
-                //else if (txtName.Text == "")
-                //{
-                //    MessageBox.Show("Name Must be filled");
-                //}
-
-                ////else if(txtName.TextLength < 3 && txtName.TextLength > 20 )
-                ////{
-                ////    MessageBox.Show("Name Must be 3 and 20 character");
-                ////}
-
-
-
-                //else if (!txtPhone.Text.StartsWith("08"))
-                //{
-                //    MessageBox.Show("Phone must be start with 0 and 8");
-                //}
-
-                ////else if (txtPhone.TextLength < 11 && txtPhone.TextLength >= 12)
-                ////{
-                ////    MessageBox.Show("Phone must be 11-12 digit");
-                ////}
+                
 
 
 
 
+                else if (gender == "")
+                {
+                    MessageBox.Show("Gender Must be Filled");
+                }
 
-                //else
-                //{
 
-                SqlConnection conn = koneksi.getKoneksi();
+                else if (txtName.Text == "")
+                {
+                    MessageBox.Show("Name Must be filled");
+                }
+
+                else if (txtName.Text.Length < 3 || txtName.Text.Length> 20)
+                {
+                    MessageBox.Show("Name Must be 3 and 20 character");
+                }
+
+
+
+                else if (!txtPhone.Text.StartsWith("08"))
+                {
+                    MessageBox.Show("Phone must be start with 0 and 8");
+                }
+
+                else if (txtPhone.Text.Length < 11 || txtPhone.Text.Length >= 12)
+                {
+                    MessageBox.Show("Phone must be 11-12 digit");
+                }
+
+
+                else if(Year < 15 && Year > 21)
+                {
+                    MessageBox.Show("the age student must be between 15 and 21 years");
+                }
+
+
+
+                else
+                {
+
+                    SqlConnection conn = koneksi.getKoneksi();
                     conn.Open();
                     try
                     {
-                    String password = txtName.Text[0].ToString().ToUpper() + txtName.Text.Length.ToString().ToLower() + dateStudent.Value.ToString("yyyy");
-                    cmd = new SqlCommand("Insert into [User] values (@username , @password , '" + "Student" + "')", conn);
-                    cmd.Parameters.AddWithValue("username", txtId.Text);
-                    cmd.Parameters.AddWithValue("password", password);
+
+                    cmd = new SqlCommand("insert into [Student] values ('" + txtId.Text.ToString() + "','" + txtName.Text.ToString() + "','" + txtAddress.Text.ToString() + "','" + gender.ToString() + "','" + dateStudent.Value.ToString("yyyy-MM-dd") + "','" + txtPhone.Text.ToString() + "','" + null + "')", conn);
                     cmd.ExecuteNonQuery();
+                    String password = txtName.Text[0].ToString().ToUpper() + txtName.Text.Length.ToString().ToLower() + dateStudent.Value.ToString("yyyy");
+                    cmd = new SqlCommand("Insert into [User](username, password, role) values ('" + txtId.Text + "' , '" + password + "' , '" + "Student" + "') ", conn);
+
+                    //cmd.Parameters.AddWithValue("username", txtId.Text);
+                    //cmd.Parameters.AddWithValue("password", password);
+                    cmd.ExecuteNonQuery();
+
                     //cmd.Parameters.AddWithValue("StudentId", txtId.Text);
                     //cmd.Parameters.AddWithValue("Name", txtName.Text);
                     //cmd.Parameters.AddWithValue("Address", txtAddress.Text);
                     //cmd.Parameters.AddWithValue("Gender", gender);
                     //cmd.Parameters.AddWithValue("DateofBirth", dateStudent.Value.ToString("yyyy-MM-dd"));
                     //cmd.Parameters.AddWithValue("PhoneNumber", txtPhone.Text);
-                    
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("berhasil input data user");
+
+
+                    MessageBox.Show("berhasil input data user");
                 }
                     catch(Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                     }
+                    MessageBox.Show("berhasil tambah student");
                     conn.Close();
-                conn.Open();
-                cmd = new SqlCommand("insert into [Student] values ('" + txtId.Text.ToString() + "','" + txtName.Text.ToString() + "','" + txtAddress.Text.ToString() + "','" + gender.ToString() + "','" + dateStudent.Value.ToString("yyyy-MM-dd") + "','" + txtPhone.Text.ToString() + "','" + null + "')", conn);
-
-
-                MessageBox.Show("berhasil tambah student");
-                conn.Close();
+                    tampilData();
             }
 
-            //}
+            }
+
+            else
+            {
+
+                Year = DateTime.Now.Year - dateStudent.Value.Year;
+                if (rdMale.Checked)
+                {
+                    gender = "Male";
+                }
+                else if (rdFemale.Checked)
+                {
+                    gender = "Female";
+                }
+
+                if (txtAddress.Text == "")
+                {
+                    MessageBox.Show("Address Must be Filled");
+                }
+
+
+
+
+
+
+                else if (gender == "")
+                {
+                    MessageBox.Show("Gender Must be Filled");
+                }
+
+
+                else if (txtName.Text == "")
+                {
+                    MessageBox.Show("Name Must be filled");
+                }
+
+                else if (txtName.Text.Length < 3 || txtName.Text.Length > 20)
+                {
+                    MessageBox.Show("Name Must be 3 and 20 character");
+                }
+
+
+
+                else if (!txtPhone.Text.StartsWith("08"))
+                {
+                    MessageBox.Show("Phone must be start with 0 and 8");
+                }
+
+                else if (txtPhone.Text.Length < 11 || txtPhone.Text.Length >= 12)
+                {
+                    MessageBox.Show("Phone must be 11-12 digit");
+                }
+
+
+                else if (Year < 15 && Year > 21)
+                {
+                    MessageBox.Show("the age student must be between 15 and 21 years");
+                }
+
+
+
+
+
+                else
+                {
+
+                    SqlConnection conn = koneksi.getKoneksi();
+                    conn.Open();
+                    try
+                    {
+
+                        cmd = new SqlCommand("Update [Student] set StudentId = '" + txtId.Text.ToString() + "', Name = '" + txtName.Text.ToString() + "', Address = '" + txtAddress.Text.ToString() + "',Gender = '" + gender.ToString() + "', DateofBirth = '" + dateStudent.Value.ToString("yyyy-MM-dd") + "', PhoneNumber = '" + txtPhone.Text.ToString() + "' where StudentId = '"+txtId.Text+"' ", conn);
+                        cmd.ExecuteNonQuery();
+                        String password = txtName.Text[0].ToString().ToUpper() + txtName.Text.Length.ToString().ToLower() + dateStudent.Value.ToString("yyyy");
+                        cmd = new SqlCommand("Update [User] Set Username = '" + txtId.Text + "' , Password = '" + password + "' , Role = '" + "Student" + "' ", conn);
+
+                        //cmd.Parameters.AddWithValue("username", txtId.Text);
+                        //cmd.Parameters.AddWithValue("password", password);
+                        cmd.ExecuteNonQuery();
+
+                        //cmd.Parameters.AddWithValue("StudentId", txtId.Text);
+                        //cmd.Parameters.AddWithValue("Name", txtName.Text);
+                        //cmd.Parameters.AddWithValue("Address", txtAddress.Text);
+                        //cmd.Parameters.AddWithValue("Gender", gender);
+                        //cmd.Parameters.AddWithValue("DateofBirth", dateStudent.Value.ToString("yyyy-MM-dd"));
+                        //cmd.Parameters.AddWithValue("PhoneNumber", txtPhone.Text);
+
+
+                        MessageBox.Show("berhasil Update data user");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    MessageBox.Show("berhasil tambah student");
+                    conn.Close();
+                    tampilData();
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            clear();
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            jenis = "update";
+            btnSave.Visible = true;
+            btnCancel.Visible = true;
+            txtName.Enabled = true;
+            txtAddress.Enabled = true;
+            txtId.Enabled = false;
+            groupBox1.Enabled = true;
+            dateStudent.Enabled = true;
+            txtPhone.Enabled = true;
+            rdMale.Enabled = true;
+            rdFemale.Enabled = true;
+
+          
+
+            
+        }
+
+        void clear()
+        {
             btnSave.Visible = false;
             btnCancel.Visible = false;
+            txtId.Enabled = false;
+            txtName.Enabled = false;
+            txtAddress.Enabled = false;
+            groupBox1.Enabled = false;
+            dateStudent.Enabled = false;
+            txtPhone.Enabled = false;
+            rdMale.Enabled = false;
+            rdFemale.Enabled = false;
+
+            txtId.Text = "";
+            txtName.Text = "";
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+            rdMale.Checked = false;
+            rdFemale.Checked = false;
+            dateStudent.Value = DateTime.Now;
+
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                txtId.Text = row.Cells["StudentId"].Value.ToString();
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                txtPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
+                txtAddress.Text = row.Cells["Address"].Value.ToString();
+                dateStudent.Text = row.Cells["DateofBirth"].Value.ToString();
+                String jenisKelamin = row.Cells["Gender"].Value.ToString();
+                if (jenisKelamin == "Male")
+                {
+                    rdMale.Checked = true;
+                }
+                else
+                {
+                    rdFemale.Checked = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Yakin Ingin Menghapus Data ? ", "", MessageBoxButtons.YesNo);
+            
+                SqlConnection conn = koneksi.getKoneksi();
+                conn.Open();
+                try
+                {
+                    cmd = new SqlCommand("Delete From [User] where username=@username", conn);
+                    cmd.Parameters.AddWithValue("username",txtId.Text);
+                    cmd.ExecuteNonQuery();
+
+                    cmd = new SqlCommand("Delete From [Student] where StudentId=@id", conn);
+                    cmd.Parameters.AddWithValue("id", txtId.Text);
+                    cmd.ExecuteNonQuery();
+                    
+                    conn.Close();
+                    tampilData();
+                    clear();
+
+
+            }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdMale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdFemale_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateStudent_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
+    
 }

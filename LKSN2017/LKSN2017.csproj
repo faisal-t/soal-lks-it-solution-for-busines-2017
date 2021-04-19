@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +72,12 @@
     <Compile Include="frmManageStudent.Designer.cs">
       <DependentUpon>frmManageStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageTeacher.Designer.cs">
+      <DependentUpon>frmManageTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageStudent.resx">
       <DependentUpon>frmManageStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageTeacher.resx">
+      <DependentUpon>frmManageTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

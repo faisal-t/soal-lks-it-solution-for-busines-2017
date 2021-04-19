@@ -168,7 +168,7 @@ namespace LKSN2017
                 {
                     MessageBox.Show("Phone must be 11-12 digit");
                 }
-                else if (angka.StartsWith("0") && angka.StartsWith("8"))
+                else if (angka.StartsWith("08"))
                 {
                     MessageBox.Show("Phone number must start with 0 and 8");
                 }
