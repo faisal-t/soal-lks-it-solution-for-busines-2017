@@ -26,6 +26,18 @@ namespace LKSN2017
         public frmManageTeacher()
         {
             InitializeComponent();
+            btnSave.Visible = false;
+            btnCancel.Visible = false;
+            txtId.Enabled = false;
+            txtName.Enabled = false;
+            txtAddress.Enabled = false;
+            txtId.Enabled = false;
+            txtId.Enabled = false;
+            groupBox1.Enabled = false;
+            dateStudent.Enabled = false;
+            txtPhone.Enabled = false;
+            rdMale.Enabled = false;
+            rdFemale.Enabled = false;
             tampilData();
         }
 
@@ -71,6 +83,18 @@ namespace LKSN2017
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            btnSave.Visible = false;
+            btnCancel.Visible = false;
+            txtId.Enabled = false;
+            txtName.Enabled = false;
+            txtAddress.Enabled = false;
+            txtId.Enabled = false;
+            txtId.Enabled = false;
+            groupBox1.Enabled = false;
+            dateStudent.Enabled = false;
+            txtPhone.Enabled = false;
+            rdMale.Enabled = false;
+            rdFemale.Enabled = false;
             clear();
         }
 
@@ -302,6 +326,35 @@ namespace LKSN2017
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
+            MessageBox.Show("Yakin Ingin Menghapus Data ? ", "", MessageBoxButtons.YesNo);
+
+            SqlConnection conn = koneksi.getKoneksi();
+            conn.Open();
+            try
+            {
+
+
+                cmd = new SqlCommand("Delete From [User] where username=@username", conn);
+                cmd.Parameters.AddWithValue("username", txtId.Text);
+                cmd.ExecuteNonQuery();
+
+               
+
+                cmd = new SqlCommand("Delete From [Teacher] where TeacherId=@id", conn);
+                cmd.Parameters.AddWithValue("id", txtId.Text);
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+                tampilData();
+                clear();
+                MessageBox.Show("Berhasil Menghapus data guru");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -337,6 +390,33 @@ namespace LKSN2017
             sda.Fill(dt);
             dataGridView1.DataSource = dt;
             conn.Close();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+                txtId.Text = row.Cells["TeacherId"].Value.ToString();
+                txtName.Text = row.Cells["Name"].Value.ToString();
+                txtPhone.Text = row.Cells["PhoneNumber"].Value.ToString();
+                txtAddress.Text = row.Cells["Address"].Value.ToString();
+                dateStudent.Text = row.Cells["DateofBirth"].Value.ToString();
+                String jenisKelamin = row.Cells["Gender"].Value.ToString();
+                if (jenisKelamin == "Male")
+                {
+                    rdMale.Checked = true;
+                }
+                else
+                {
+                    rdFemale.Checked = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

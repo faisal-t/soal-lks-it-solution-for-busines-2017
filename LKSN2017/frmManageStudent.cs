@@ -412,17 +412,31 @@ namespace LKSN2017
                 conn.Open();
                 try
                 {
+
+                    cmd = new SqlCommand("Delete From [DetailClass] where StudentId=@id", conn);
+                    cmd.Parameters.AddWithValue("id", txtId.Text);
+                    cmd.ExecuteNonQuery();
+
                     cmd = new SqlCommand("Delete From [User] where username=@username", conn);
                     cmd.Parameters.AddWithValue("username",txtId.Text);
                     cmd.ExecuteNonQuery();
 
+
+
                     cmd = new SqlCommand("Delete From [Student] where StudentId=@id", conn);
                     cmd.Parameters.AddWithValue("id", txtId.Text);
                     cmd.ExecuteNonQuery();
+
+                   
+
+
                     
+
+
                     conn.Close();
                     tampilData();
                     clear();
+                    MessageBox.Show("Berhasil Hapus Data siswa");
 
 
             }

@@ -87,6 +87,7 @@
             this.btnManageTeacher.TabIndex = 6;
             this.btnManageTeacher.Text = "ManageTeacher";
             this.btnManageTeacher.UseVisualStyleBackColor = true;
+            this.btnManageTeacher.Click += new System.EventHandler(this.btnManageTeacher_Click);
             // 
             // btnManageClass
             // 
@@ -96,6 +97,7 @@
             this.btnManageClass.TabIndex = 7;
             this.btnManageClass.Text = "Manage Class";
             this.btnManageClass.UseVisualStyleBackColor = true;
+            this.btnManageClass.Click += new System.EventHandler(this.btnManageClass_Click);
             // 
             // btnManageSchedule
             // 

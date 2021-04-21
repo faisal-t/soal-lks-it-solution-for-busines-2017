@@ -15,6 +15,7 @@ namespace LKSN2017
 
         public String FotoNama = "";
         private String role;
+        public static String passwordRole = "";
         
         
 
@@ -218,6 +219,20 @@ namespace LKSN2017
             {
                 conn.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (StudentNavigation.role == "Student")
+            {
+                passwordRole = "Student";
+            }
+            else
+            {
+                passwordRole = "Teacher";
+            }
+            frmChangePassword frmchange = new frmChangePassword();
+            frmchange.Show();
         }
     }
 }

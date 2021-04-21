@@ -74,6 +74,18 @@ namespace LKSN2017
 
         private void btnManageStudent_Click(object sender, EventArgs e)
         {
+            frmManageStudent frmstudent = new frmManageStudent();
+            frmstudent.Show();
+        }
+
+        private void btnManageTeacher_Click(object sender, EventArgs e)
+        {
+            frmManageTeacher frmteacher = new frmManageTeacher();
+            frmteacher.Show();
+        }
+
+        private void btnManageClass_Click(object sender, EventArgs e)
+        {
 
         }
     }
