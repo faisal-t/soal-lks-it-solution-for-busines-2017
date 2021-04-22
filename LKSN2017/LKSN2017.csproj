@@ -78,6 +78,12 @@
     <Compile Include="frmManageClass.Designer.cs">
       <DependentUpon>frmManageClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageSchedule.Designer.cs">
+      <DependentUpon>frmManageSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditProfile.resx">
       <DependentUpon>FrmEditProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageClass.resx">
+      <DependentUpon>frmManageClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageSchedule.resx">
+      <DependentUpon>frmManageSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageStudent.resx">
       <DependentUpon>frmManageStudent.cs</DependentUpon>
