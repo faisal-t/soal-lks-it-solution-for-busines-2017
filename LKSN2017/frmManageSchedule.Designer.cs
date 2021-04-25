@@ -137,6 +137,7 @@
             this.comboDay.Size = new System.Drawing.Size(249, 21);
             this.comboDay.TabIndex = 7;
             this.comboDay.Text = "Monday";
+            this.comboDay.SelectedIndexChanged += new System.EventHandler(this.comboDay_SelectedIndexChanged);
             // 
             // dataGridView1
             // 

@@ -41,3 +41,7 @@ C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.frmManageTeacher
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.frmChangePassword.resources
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.frmManageClass.resources
 C:\Users\mrx\Documents\LKSN 2017\c-\LKSN2017\obj\Debug\LKSN2017.frmManageSchedule.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmChangePassword.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageClass.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageSchedule.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageTeacher.resources

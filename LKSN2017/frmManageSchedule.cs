@@ -33,6 +33,7 @@ namespace LKSN2017
             kelas = comboClassId.SelectedItem.ToString();
             getTeacher();
             getSubject();
+            getData();
            
             
 
@@ -58,12 +59,22 @@ namespace LKSN2017
             SqlConnection conn = koneksi.getKoneksi();
             conn.Open();
 
-            //if (kelas == "XA" || "X")
-            //{
+            if (kelas == "XA" || kelas == "XB")
+            {
+                kelas = "1";
+            }
+            else if (kelas == "XIA" || kelas == "XIB")
+            {
+                kelas = "2";
+            }
+            else
+            {
+                kelas = "3";
+            }
 
-            //}
 
-            String query = "Select SubjectId,(SubjectId + '-' + Name) AS SUBJ From [Subject] where ForGrade = '"+kelas+"' ";
+
+            String query = "Select SubjectId,(SubjectId + '-' + Name) AS SUBJ From [Subject] where ForGrade = '"+Int32.Parse(kelas)+"' ";
             
             sda = new SqlDataAdapter(query, conn);
             DataSet ds = new DataSet();
@@ -72,6 +83,7 @@ namespace LKSN2017
             comboSubject.DisplayMember = "SUBJ";
             comboSubject.ValueMember = "SubjectId";
             comboSubject.DataSource = ds.Tables["Subject"];
+            
 
         }
 
@@ -83,6 +95,50 @@ namespace LKSN2017
         private void comboClassId_SelectedIndexChanged(object sender, EventArgs e)
         {
             kelas = comboClassId.SelectedItem.ToString();
+            getSubject();
+            getData();
         }
+
+
+
+        private void comboDay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getData();
+        }
+
+        private void getData()
+        {
+            SqlConnection conn = koneksi.getKoneksi();
+            conn.Open();
+
+           
+
+            if (comboClassId.SelectedItem == "XA" || comboClassId.SelectedItem == "XB")
+            {
+                kelas = "1";
+            }
+            else if (comboClassId.SelectedItem == "XIA" || comboClassId.SelectedItem == "XIB")
+            {
+                kelas = "2";
+            }
+            else
+            {
+                kelas = "3";
+            }
+
+
+            cmd = new SqlCommand("Select DetailSchedule.SubjectId,Subject.Name,DetailSchedule.TeacherId,Teacher.Name as TeacherName,shiftId,Day From [DetailSchedule] Join[Subject] ON DetailSchedule.SubjectId = Subject.SubjectId Join[Teacher] ON DetailSchedule.TeacherId = Teacher.TeacherId where Subject.forGrade ='"+Int32.Parse(kelas)+"' And Day =@day ", conn);
+            //cmd.Parameters.AddWithValue("kelas", Int32.Parse(kelas));
+            cmd.Parameters.AddWithValue("day", comboDay.SelectedItem.ToString());
+            cmd.ExecuteNonQuery();
+            sda = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
+        }
+
+       
     }
 }
