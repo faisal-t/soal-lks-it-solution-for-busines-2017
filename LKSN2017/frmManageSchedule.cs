@@ -20,6 +20,8 @@ namespace LKSN2017
         private SqlDataReader sdr;
         private SqlDataAdapter sda;
         private String kelas = "";
+        private String jenis = "";
+        private String detailId = "";
 
 
         public frmManageSchedule()
@@ -35,7 +37,15 @@ namespace LKSN2017
             getSubject();
             getData();
            
-            
+            comboTeacher.Enabled = false;
+            comboSubject.Enabled = false;
+            comboShift.Enabled = false;
+           
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
+
+
+
 
         }
 
@@ -89,7 +99,15 @@ namespace LKSN2017
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(kelas);
+            jenis = "Insert";
+            comboClassId.Enabled = true;
+            comboDay.Enabled = true;
+            comboTeacher.Enabled = true;
+            comboSubject.Enabled = true;
+            comboShift.Enabled = true;
+            btnInsert.Visible = true;
+            btnCancel.Visible = true;
+            btnSave.Visible = true;
         }
 
         private void comboClassId_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,18 +145,113 @@ namespace LKSN2017
             }
 
 
-            cmd = new SqlCommand("Select DetailSchedule.SubjectId,Subject.Name,DetailSchedule.TeacherId,Teacher.Name as TeacherName,shiftId,Day From [DetailSchedule] Join[Subject] ON DetailSchedule.SubjectId = Subject.SubjectId Join[Teacher] ON DetailSchedule.TeacherId = Teacher.TeacherId where Subject.forGrade ='"+Int32.Parse(kelas)+"' And Day =@day ", conn);
+            cmd = new SqlCommand("Select DetailId, DetailSchedule.SubjectId,Subject.Name,DetailSchedule.TeacherId,Teacher.Name as TeacherName,shiftId,Day From [DetailSchedule] Join[Subject] ON DetailSchedule.SubjectId = Subject.SubjectId Join[Teacher] ON DetailSchedule.TeacherId = Teacher.TeacherId where Subject.forGrade ='"+Int32.Parse(kelas)+"' And Day =@day ", conn);
             //cmd.Parameters.AddWithValue("kelas", Int32.Parse(kelas));
             cmd.Parameters.AddWithValue("day", comboDay.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
             sda = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
+            
             sda.Fill(dt);
-            dataGridView1.DataSource = dt;
 
+            dataGridView1.DataSource = dt;
+            dataGridView1.Columns[0].Visible = false;
 
         }
 
-       
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = koneksi.getKoneksi();
+            conn.Open();
+            
+            cmd = new SqlCommand("Select SubjectId From[Subject] where[Subject].SubjectId NOT IN(Select SubjectId From[DetailSchedule])", conn);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                MessageBox.Show("data pelajaran yang belum menerima guru " + sdr[0].ToString());
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            jenis = "Update";
+            comboClassId.Enabled = true;
+            comboDay.Enabled = true;
+            comboTeacher.Enabled = true;
+            comboSubject.Enabled = true;
+            comboShift.Enabled = true;
+            btnInsert.Visible = true;
+            btnCancel.Visible = true;
+            btnSave.Visible = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            comboTeacher.Enabled = false;
+            comboSubject.Enabled = false;
+            comboShift.Enabled = false;
+
+            btnCancel.Visible = false;
+            btnSave.Visible = false;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = koneksi.getKoneksi();
+           
+            conn.Open();
+            cmd = new SqlCommand("select * from [DetailSchedule] where SubjectId = @subject and TeacherId = @teacher and Day=@day and ShiftId=@shift;",conn);
+            cmd.Parameters.AddWithValue("subject",comboSubject.SelectedItem);
+            cmd.Parameters.AddWithValue("teacher", comboTeacher.SelectedItem);
+            cmd.Parameters.AddWithValue("day", comboDay.SelectedItem);
+            cmd.Parameters.AddWithValue("shift", comboShift.SelectedItem);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            if (sdr.Read())
+            {
+                MessageBox.Show("Data Pelajaran Sudah dipunyai guru lain");
+            }
+            else
+            {
+                if(jenis == "Insert")
+                {
+                    cmd = new SqlCommand("Insert Into [DetailSchedule] Values(@ScheduleId,@SubjectId,@TeacherId,@Day,@ShiftId)",conn);
+                    cmd.Parameters.AddWithValue("ScheduleId",kelas);
+                    cmd.Parameters.AddWithValue("SubjectId", comboSubject.SelectedItem);
+                    cmd.Parameters.AddWithValue("TeacherId", comboTeacher.SelectedItem);
+                    cmd.Parameters.AddWithValue("Day", comboDay.SelectedItem);
+                    cmd.Parameters.AddWithValue("ShiftId", comboShift.SelectedItem);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Berhasil Input Schedule");
+                }
+
+                else
+                {
+                    cmd = new SqlCommand("Update [DetailSchedule] Set ScheduleId=@schedule , SubjectId=@subject , TeacherId = @teacher , Day = @day , ShiftId = @shift where DetailId = @detail", conn);
+                    cmd.Parameters.AddWithValue("schedule", kelas);
+                    cmd.Parameters.AddWithValue("subject", comboSubject.SelectedItem);
+                    cmd.Parameters.AddWithValue("teacher", comboTeacher.SelectedItem);
+                    cmd.Parameters.AddWithValue("day", comboDay.SelectedItem);
+                    cmd.Parameters.AddWithValue("shift", comboShift.SelectedItem);
+                    cmd.Parameters.AddWithValue("detail",detailId);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Berhasil Edit Schedule");
+                }
+            }
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+
+            detailId = row.Cells[0].Value.ToString();
+            //comboShift = row.Cells["ShiftId"].Value.ToString();
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
