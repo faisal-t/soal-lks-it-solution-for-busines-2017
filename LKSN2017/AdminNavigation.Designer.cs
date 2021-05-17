@@ -107,6 +107,7 @@
             this.btnManageSchedule.TabIndex = 8;
             this.btnManageSchedule.Text = "Manage Schedule";
             this.btnManageSchedule.UseVisualStyleBackColor = true;
+            this.btnManageSchedule.Click += new System.EventHandler(this.btnManageSchedule_Click);
             // 
             // btnFinalizeSchedule
             // 
@@ -116,6 +117,7 @@
             this.btnFinalizeSchedule.TabIndex = 9;
             this.btnFinalizeSchedule.Text = "Finalize Schedule";
             this.btnFinalizeSchedule.UseVisualStyleBackColor = true;
+            this.btnFinalizeSchedule.Click += new System.EventHandler(this.btnFinalizeSchedule_Click);
             // 
             // btnViewReport
             // 
@@ -125,6 +127,7 @@
             this.btnViewReport.TabIndex = 10;
             this.btnViewReport.Text = "View Report Score";
             this.btnViewReport.UseVisualStyleBackColor = true;
+            this.btnViewReport.Click += new System.EventHandler(this.btnViewReport_Click);
             // 
             // AdminNavigation
             // 

@@ -45,3 +45,5 @@ D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmChangePassword.resources
 D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageClass.resources
 D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageSchedule.resources
 D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.frmManageTeacher.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.FrmViewScheduleTeacher.resources
+D:\latihan lks\c-\LKSN2017\obj\Debug\LKSN2017.InputScoreForm.resources

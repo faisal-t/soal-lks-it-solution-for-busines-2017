@@ -201,10 +201,10 @@ namespace LKSN2017
            
             conn.Open();
             cmd = new SqlCommand("select * from [DetailSchedule] where SubjectId = @subject and TeacherId = @teacher and Day=@day and ShiftId=@shift;",conn);
-            cmd.Parameters.AddWithValue("subject",comboSubject.SelectedItem);
-            cmd.Parameters.AddWithValue("teacher", comboTeacher.SelectedItem);
-            cmd.Parameters.AddWithValue("day", comboDay.SelectedItem);
-            cmd.Parameters.AddWithValue("shift", comboShift.SelectedItem);
+            cmd.Parameters.AddWithValue("subject",comboSubject.ValueMember);
+            cmd.Parameters.AddWithValue("teacher", comboTeacher.ValueMember);
+            cmd.Parameters.AddWithValue("day", comboDay.ValueMember);
+            cmd.Parameters.AddWithValue("shift", comboShift.ValueMember);
             SqlDataReader sdr = cmd.ExecuteReader();
             if (sdr.Read())
             {
@@ -216,10 +216,10 @@ namespace LKSN2017
                 {
                     cmd = new SqlCommand("Insert Into [DetailSchedule] Values(@ScheduleId,@SubjectId,@TeacherId,@Day,@ShiftId)",conn);
                     cmd.Parameters.AddWithValue("ScheduleId",kelas);
-                    cmd.Parameters.AddWithValue("SubjectId", comboSubject.SelectedItem);
-                    cmd.Parameters.AddWithValue("TeacherId", comboTeacher.SelectedItem);
-                    cmd.Parameters.AddWithValue("Day", comboDay.SelectedItem);
-                    cmd.Parameters.AddWithValue("ShiftId", comboShift.SelectedItem);
+                    cmd.Parameters.AddWithValue("SubjectId", comboSubject.ValueMember);
+                    cmd.Parameters.AddWithValue("TeacherId", comboTeacher.ValueMember);
+                    cmd.Parameters.AddWithValue("Day", comboDay.ValueMember);
+                    cmd.Parameters.AddWithValue("ShiftId", comboShift.ValueMember);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Berhasil Input Schedule");
                 }
@@ -228,10 +228,10 @@ namespace LKSN2017
                 {
                     cmd = new SqlCommand("Update [DetailSchedule] Set ScheduleId=@schedule , SubjectId=@subject , TeacherId = @teacher , Day = @day , ShiftId = @shift where DetailId = @detail", conn);
                     cmd.Parameters.AddWithValue("schedule", kelas);
-                    cmd.Parameters.AddWithValue("subject", comboSubject.SelectedItem);
-                    cmd.Parameters.AddWithValue("teacher", comboTeacher.SelectedItem);
-                    cmd.Parameters.AddWithValue("day", comboDay.SelectedItem);
-                    cmd.Parameters.AddWithValue("shift", comboShift.SelectedItem);
+                    cmd.Parameters.AddWithValue("subject", comboSubject.ValueMember);
+                    cmd.Parameters.AddWithValue("teacher", comboTeacher.ValueMember);
+                    cmd.Parameters.AddWithValue("day", comboDay.ValueMember);
+                    cmd.Parameters.AddWithValue("shift", comboShift.ValueMember);
                     cmd.Parameters.AddWithValue("detail",detailId);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Berhasil Edit Schedule");
@@ -250,6 +250,11 @@ namespace LKSN2017
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

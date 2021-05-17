@@ -13,7 +13,7 @@ namespace LKSN2017
         public SqlConnection getKoneksi()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = "Data Source=desktop-on1o43k;initial catalog=LKS2017-1;integrated security=true;";
+            conn.ConnectionString = "Data Source=HP-PC;initial catalog=LKS-2017;integrated security=true;";
             return conn;
         }
 

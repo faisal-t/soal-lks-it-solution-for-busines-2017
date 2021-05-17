@@ -157,6 +157,7 @@
             this.comboSubject.Size = new System.Drawing.Size(185, 21);
             this.comboSubject.TabIndex = 9;
             this.comboSubject.Text = "S1001-agama";
+            this.comboSubject.SelectedIndexChanged += new System.EventHandler(this.comboSubject_SelectedIndexChanged);
             // 
             // comboShift
             // 

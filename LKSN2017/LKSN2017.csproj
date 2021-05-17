@@ -96,6 +96,18 @@
     <Compile Include="frmManageTeacher.Designer.cs">
       <DependentUpon>frmManageTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmViewScheduleTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmViewScheduleTeacher.Designer.cs">
+      <DependentUpon>FrmViewScheduleTeacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputScoreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputScoreForm.Designer.cs">
+      <DependentUpon>InputScoreForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +147,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageTeacher.resx">
       <DependentUpon>frmManageTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmViewScheduleTeacher.resx">
+      <DependentUpon>FrmViewScheduleTeacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputScoreForm.resx">
+      <DependentUpon>InputScoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

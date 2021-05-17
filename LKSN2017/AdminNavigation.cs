@@ -86,6 +86,23 @@ namespace LKSN2017
 
         private void btnManageClass_Click(object sender, EventArgs e)
         {
+            frmManageClass frmmanageclass = new frmManageClass();
+            frmmanageclass.Show();
+        }
+
+        private void btnManageSchedule_Click(object sender, EventArgs e)
+        {
+            frmManageSchedule frmmanageSchedule = new frmManageSchedule();
+            frmmanageSchedule.Show();
+        }
+
+        private void btnFinalizeSchedule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnViewReport_Click(object sender, EventArgs e)
+        {
 
         }
     }

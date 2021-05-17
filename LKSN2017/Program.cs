@@ -13,7 +13,7 @@ namespace LKSN2017
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmManageSchedule());
+            Application.Run(new InputScoreForm());
         }
     }
 }

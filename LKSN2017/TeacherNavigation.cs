@@ -89,5 +89,16 @@ namespace LKSN2017
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmViewScheduleTeacher frmTeaching = new FrmViewScheduleTeacher();
+            frmTeaching.Show();
+        }
+
+        private void TeacherName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

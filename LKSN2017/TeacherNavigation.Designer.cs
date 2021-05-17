@@ -63,6 +63,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "Teaching Schedule";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -83,6 +84,7 @@
             this.TeacherName.Size = new System.Drawing.Size(129, 20);
             this.TeacherName.TabIndex = 7;
             this.TeacherName.Text = "[ Teacher Name ]";
+            this.TeacherName.Click += new System.EventHandler(this.TeacherName_Click);
             // 
             // label1
             // 
